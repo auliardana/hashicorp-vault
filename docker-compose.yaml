@@ -1,0 +1,58 @@
+# version: '4'  # Versi Docker Compose
+
+# services:
+#   vault:
+#     hostname: vault
+#     container_name: vault-non-dev
+#     image: hashicorp/vault:latest
+#     entrypoint: vault server -config=/vault/conf/config.hcl
+#     environment:
+#       VAULT_ADDR: http://0.0.0.0:8200
+#       VAULT_API_ADDR: http://0.0.0.0:8200
+#     ports:
+#       - "8200:8200"
+#     volumes:
+#       - "./conf:/vault/conf"
+#       - "vault-data:/vault/data"
+#     cap_add:
+#       - IPC_LOCK
+#     networks:
+#       - my-network
+
+#   # postgres-db:
+#   #   image: postgres:latest
+#   #   container_name: postgresql
+#   #   environment:
+#   #     POSTGRES_DB: vault
+#   #     POSTGRES_USER: vaultadmin
+#   #     POSTGRES_PASSWORD: vault
+#   #   ports:
+#   #     - "5432:5432"
+#   #   volumes:
+#   #     - postgres-data:/var/lib/postgresql/data
+#   #   networks:
+#   #     - my-network
+
+#   api:
+#     build: .
+#     restart: always
+#     environment:
+#       VAULT_ADDR: http://vault-non-dev:8200
+#     ports:
+#         - 3000:3000
+#     depends_on:
+#         - postgres-db
+#         # - vault
+#     networks:
+#         - my-network
+
+
+# volumes:
+#   vault-data:
+#     driver: local
+#   # postgres-data:
+#   #   driver: local
+
+# networks:
+#   my-network:
+#     driver: bridge
